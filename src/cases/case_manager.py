@@ -37,7 +37,7 @@ def update_case(case_id: str, status: str = None, analyst: str = None):
     if not raw:
         raise ValueError("Case not found")
 
-    case = eval(raw.decode())  # simple, replace with json if you prefer
+    case = eval(raw.decode())  # simple, replace with json if preferable
 
     if status:
         case["status"] = status

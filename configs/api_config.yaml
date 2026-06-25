@@ -1,0 +1,30 @@
+api:
+  host: 0.0.0.0
+  port: 8000
+  debug: false
+
+  auth:
+    enabled: true
+    jwt_secret: "CHANGE_ME"
+    token_expiry_minutes: 60
+
+  rate_limit:
+    enabled: true
+    requests_per_minute: 300
+
+  logging:
+    level: INFO
+
+services:
+  kafka:
+    bootstrap_servers: "localhost:9092"
+    fraud_scores_topic: "osprey.fraud.scores"
+    raw_tx_topic: "osprey.transactions.raw"
+
+  redis:
+    url: "redis://localhost:6379/0"
+
+  triton:
+    host: "localhost"
+    port: 8001
+    model_name: "osprey_fraud_gpu"

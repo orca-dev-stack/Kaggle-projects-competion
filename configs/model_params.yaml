@@ -1,0 +1,42 @@
+tabular_models:
+  lightgbm:
+    n_estimators: 800
+    learning_rate: 0.05
+    max_depth: -1
+    num_leaves: 64
+    subsample: 0.8
+    colsample_bytree: 0.8
+    class_weight: "balanced"
+
+  xgboost:
+    n_estimators: 600
+    learning_rate: 0.05
+    max_depth: 8
+    subsample: 0.8
+    colsample_bytree: 0.8
+    scale_pos_weight: 10
+
+  catboost:
+    iterations: 1000
+    learning_rate: 0.03
+    depth: 8
+    loss_function: "Logloss"
+    scale_pos_weight: 10
+
+gpu_model:
+  random_forest:
+    n_estimators: 500
+    max_depth: 20
+
+thresholds:
+  base:
+    high: 0.85
+    medium: 0.65
+    low: 0.40
+
+  type_based:
+    card: 0.80
+    crypto: 0.75
+    ach: 0.70
+    wallet: 0.78
+    merchant: 0.72

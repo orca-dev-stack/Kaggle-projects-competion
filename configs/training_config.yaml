@@ -1,0 +1,39 @@
+training:
+  random_state: 42
+  test_size: 0.2
+  validation_size: 0.1
+  shuffle: true
+
+  target_column: "label"
+
+  features:
+    drop_columns:
+      - "transaction_id"
+      - "raw_timestamp"
+    categorical:
+      - "tx_type"
+      - "country"
+      - "merchant_id"
+    numerical:
+      - "amount"
+      - "log_amount"
+      - "time_since_last_tx"
+      - "device_user_count"
+      - "ip_risk_score"
+
+  gpu:
+    enabled: true
+    batch_size: 4096
+
+  incremental:
+    enabled: true
+    batch_size: 5000
+    kafka_trigger_topic: "osprey.incremental.trigger"
+
+monitoring:
+  drift:
+    enabled: true
+    adwin_delta: 0.002
+  retrain:
+    auc_threshold: 0.90
+    check_interval_minutes: 30
